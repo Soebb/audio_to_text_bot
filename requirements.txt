@@ -1,0 +1,11 @@
+certifi==2021.5.30
+charset-normalizer==2.0.6
+colorama==0.4.4
+ffmpeg==1.4
+idna==3.2
+pretty-errors==1.2.24
+pydub==0.25.1
+pyTelegramBotAPI==4.0.1
+requests==2.26.0
+SpeechRecognition==3.8.1
+urllib3==1.26.6
