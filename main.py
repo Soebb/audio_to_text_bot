@@ -1,5 +1,6 @@
 import tokens
 import telebot
+import requests
 import pretty_errors
 
 bot = telebot.AsyncTeleBot(tokens.BOT_TOKEN)
@@ -18,10 +19,19 @@ def send_welcome(message):
 
     bot.reply_to(message, text).wait()
 
+@bot.message_handler(content_types=['voice'])
+def recebe_audio(message):
+
+    file_info = bot.get_file(message.voice.file_id).wait()
+
+    file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(tokens.BOT_TOKEN, file_info.file_path))
+
+    bot.reply_to(message, "Ainda em desenvolvimento").wait()
+
 if __name__ == "__main__":
 
     while True:
         try:
             bot.polling()
         except Exception as error:
-            print(f"Bot Caiu: {str(error)}")
+            print(error)
