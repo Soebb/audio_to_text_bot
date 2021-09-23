@@ -6,7 +6,8 @@ from pydub import AudioSegment
 import os
 import pretty_errors
 
-bot = telebot.AsyncTeleBot(tokens.BOT_TOKEN)
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+bot = telebot.AsyncTeleBot(BOT_TOKEN)
 r = sr.Recognizer()
 pasta_de_audio = os.path.join(os.getcwd(), 'audios')
 
@@ -37,7 +38,7 @@ def recebe_audio(message):
 
     file_name = file_info.file_path.split('/')[1]
 
-    file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(tokens.BOT_TOKEN, file_info.file_path))
+    file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(BOT_TOKEN, file_info.file_path))
 
     audio = converter_audio(file_name, file)
 
