@@ -102,7 +102,7 @@ def extrair_texto(audio):
         audio_data = r.record(source)
 
         try:
-            text = r.recognize_google(audio_data,language='pt-BR')
+            text = r.recognize_google(audio_data,language='tr-TR')
         except sr.UnknownValueError:
             text = "Texto não entendido"
 
